@@ -1,4 +1,4 @@
-package de.pandastudios.pandaGameEngine.utility;
+package de.pandastudios.endorworks.utility;
 
 import com.badlogic.gdx.Gdx;
 

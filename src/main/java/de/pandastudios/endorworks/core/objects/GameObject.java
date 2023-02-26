@@ -1,6 +1,6 @@
-package de.pandastudios.pandaGameEngine.core.objects;
+package de.pandastudios.endorworks.core.objects;
 
-import de.pandastudios.pandaGameEngine.utility.RenderUtilDAO;
+import de.pandastudios.endorworks.utility.RenderUtilDAO;
 
 public interface GameObject {
 

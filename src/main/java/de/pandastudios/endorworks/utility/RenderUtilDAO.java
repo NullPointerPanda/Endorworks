@@ -1,4 +1,4 @@
-package de.pandastudios.pandaGameEngine.utility;
+package de.pandastudios.endorworks.utility;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;

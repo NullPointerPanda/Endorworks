@@ -1,9 +1,9 @@
-package de.pandastudios.pandaGameEngine.core.objects;
+package de.pandastudios.endorworks.core.objects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import de.pandastudios.pandaGameEngine.utility.RenderUtilDAO;
+import de.pandastudios.endorworks.utility.RenderUtilDAO;
 
 public class Enemy implements GameObject{
 	
