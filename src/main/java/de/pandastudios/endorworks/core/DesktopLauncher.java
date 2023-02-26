@@ -7,8 +7,8 @@ public class DesktopLauncher {
     public static void main (String[] args) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "ENDORWORKS";
-        config.width = 1280;
-        config.height = 720;
+        config.width = 1920;
+        config.height = 1080;
         config.resizable = false;
         new LwjglApplication(new Endorworks(), config);
     }
