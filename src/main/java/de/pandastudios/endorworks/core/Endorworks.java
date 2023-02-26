@@ -1,14 +1,21 @@
 package de.pandastudios.endorworks.core;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Endorworks extends Game {
 
 //	private ArrayList<GameObject> gameObjects;
 //	private RenderUtilDAO renderUtilDAO;
+	
+	private SpriteBatch batch;
+	private GameScreen screen;
 
 	@Override
 	public void create() {
+		batch = new SpriteBatch();
+		screen = new GameScreen(batch);
+		setScreen(screen);
 //		gameObjects = new ArrayList<>();
 //		renderUtilDAO = new RenderUtilDAO();
 //
@@ -28,6 +35,7 @@ public class Endorworks extends Game {
 
 	@Override
 	public void render() {
+		super.render();
 //		Gdx.gl.glClearColor(0, 0, 0, 1);
 //		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 //
