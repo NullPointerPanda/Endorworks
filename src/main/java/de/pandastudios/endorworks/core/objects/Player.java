@@ -2,56 +2,94 @@ package de.pandastudios.endorworks.core.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-import de.pandastudios.endorworks.utility.RenderUtilDAO;
+import de.pandastudios.endorworks.utility.PlayerInputHandler;
 
-public class Player implements GameObject {
-	private Texture texture;
-	private Vector2 velocity = new Vector2();
+public class Player {
 
-	private float x;
-	private float y;
+	private Texture playerTexture;
+	private Vector2 playerWorldPos;
+	private Vector2 playerTilePos;
+	private float movementTimeLock;
 
-	public Player(final float x, final float y, final Texture texture) {
-		this.x = x;
-		this.y = y;
-		this.texture = texture;
+	public Player() {
+		playerTexture = new Texture(Gdx.files.internal("baum_upper.png"));
+		playerWorldPos = new Vector2(0, 259);
+		playerTilePos = new Vector2(7, 7);
+		movementTimeLock = 0.15f;
 	}
 
-	@Override
-	public void update() {
-		velocity.x = 0;
-		velocity.y = 0;
+	public void render(SpriteBatch batch) {
+		batch.draw(playerTexture, playerWorldPos.x, playerWorldPos.y);
+	}
 
-		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-			velocity.x = -200;
-		} else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-			velocity.x = 200;
+	public void update(float delta, OrthographicCamera camera) {
+		movementTimeLock += delta;
+
+		if (movementTimeLock > 0.15) {
+			switch (PlayerInputHandler.handlePlayerInput(this)) {
+			case 0: {
+				break;
+			}
+			case Input.Keys.W: {
+				camera.position.x -= 32;
+				camera.position.y += 18.5;
+				break;
+			}
+			case Input.Keys.S: {
+				camera.position.x += 32;
+				camera.position.y -= 18.5;
+				break;
+			}
+			case Input.Keys.A: {
+				camera.position.x -= 32;
+				camera.position.y -= 18.5;
+				break;
+			}
+			case Input.Keys.D: {
+				camera.position.x += 32;
+				camera.position.y += 18.5;
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value from PlayerInputHandler");
+			}
 		}
-
-		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-			velocity.y = 200;
-		} else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-			velocity.y = -200;
-		}
-
-		x += velocity.x * Gdx.graphics.getDeltaTime();
-		y += velocity.y * Gdx.graphics.getDeltaTime();
 	}
 
-	@Override
-	public void render(RenderUtilDAO renderUtilDAO) {
-		SpriteBatch batch = renderUtilDAO.getBatch();
-		batch.enableBlending();
-		batch.draw(texture, x, y);
-		batch.disableBlending();
+	public float getMovementTimeLock() {
+		return movementTimeLock;
 	}
 
-	@Override
-	public void dispose() {
-		texture.dispose();
+	public void setMovementTimeLock(final float movementTimeLock) {
+		this.movementTimeLock = movementTimeLock;
+	}
+
+	public Vector2 getPlayerWorldPos() {
+		return playerWorldPos;
+	}
+
+	public void setPlayerWorldPosX(final float playerWorldPosX) {
+		this.playerWorldPos.x = playerWorldPosX;
+	}
+	
+	public void setPlayerWorldPosY(final float playerWorldPosY) {
+		this.playerWorldPos.y = playerWorldPosY;
+	}
+
+	public Vector2 getPlayerTilePos() {
+		return playerTilePos;
+	}
+
+	public void setPlayerTilePosX(final float playerTilePosX) {
+		this.playerTilePos.x = playerTilePosX;
+	}
+	
+	public void setPlayerTilePosY(final float playerTilePosY) {
+		this.playerTilePos.y = playerTilePosY;
 	}
 }
