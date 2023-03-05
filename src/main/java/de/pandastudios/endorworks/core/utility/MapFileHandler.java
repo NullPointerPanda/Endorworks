@@ -1,4 +1,4 @@
-package de.pandastudios.endorworks.utility;
+package de.pandastudios.endorworks.core.utility;
 
 import static com.badlogic.gdx.Gdx.files;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
@@ -12,9 +12,21 @@ import org.slf4j.Logger;
 
 import com.badlogic.gdx.files.FileHandle;
 
+/**
+ * File trader that should read the game map from a file.
+ *
+ */
 public class MapFileHandler {
 	private static final Logger LOGGER = getLogger(MapFileHandler.class);
-	
+
+	/**
+	 * Reading File.
+	 * 
+	 * @param rows     rows
+	 * @param cols     cols
+	 * @param fileName filename of the File
+	 * @return map as string matrix
+	 */
 	public static String[][] readMap(final int rows, final int cols, final String fileName) {
 
 		String[][] map = new String[rows][cols];

@@ -1,12 +1,17 @@
-package de.pandastudios.endorworks.core;
+package de.pandastudios.endorworks.core.objects;
 
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Disposable;
 
-public class Isometric {
+/**
+ * The Isometric.class defines how an isometric tile behaves and is rendered.
+ *
+ */
+public class IsometricTile implements Disposable{
 
 	private Texture texture;
 	private Vector2 tilemapPos;
@@ -16,7 +21,14 @@ public class Isometric {
 	private float time;
 	private float aniSpeed;
 
-	public Isometric(Texture texture, Vector2 tilemapPos, Vector2 worldPos) {
+	/**
+	 * Constructor.
+	 * 
+	 * @param texture    texture of the tile
+	 * @param tilemapPos position of the tile in the TileMap
+	 * @param worldPos   position of the tile in the WorldMap
+	 */
+	public IsometricTile(Texture texture, Vector2 tilemapPos, Vector2 worldPos) {
 		this.texture = texture;
 		this.tilemapPos = tilemapPos;
 		this.worldPos = worldPos;
@@ -27,6 +39,15 @@ public class Isometric {
 		aniSpeed = aniOptions[random.nextInt(4)];
 	}
 
+	/**
+	 * Render method which renders new elements of the TileMap as soon as they
+	 * become visible to the player.
+	 * 
+	 * @param batch         SpriteBatch
+	 * @param delta         the amount of time that has elapsed since the previous
+	 *                      frame.
+	 * @param playerTilePos position of the player in the TileMap
+	 */
 	public void render(SpriteBatch batch, float delta, Vector2 playerTilePos) {
 
 		if (Math.abs(tilemapPos.x - playerTilePos.x) <= 4 && Math.abs(tilemapPos.y - playerTilePos.y) <= 4) {
@@ -63,6 +84,11 @@ public class Isometric {
 
 		}
 
+	}
+
+	@Override
+	public void dispose() {
+		texture.dispose();
 	}
 
 }

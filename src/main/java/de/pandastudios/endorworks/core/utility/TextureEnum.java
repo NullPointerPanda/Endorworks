@@ -1,5 +1,9 @@
-package de.pandastudios.endorworks.utility;
+package de.pandastudios.endorworks.core.utility;
 
+/**
+ * Enum for the information of the files with the textures.
+ *
+ */
 public enum TextureEnum {
 	GRASS("GRASS", "grass.png"),
 	GRASS_UPPER("GRASS_UPPER", "grass_upper.png"),
