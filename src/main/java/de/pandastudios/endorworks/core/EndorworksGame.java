@@ -2,6 +2,7 @@ package de.pandastudios.endorworks.core;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.assets.AssetManager;
 
 import de.pandastudios.endorworks.core.screens.GameScreen;
@@ -38,10 +39,10 @@ public class EndorworksGame extends Game implements InputObserver {
 	public void create() {
 		this.initInputSystem();
 		assetManager = new AssetManager();
+		// setScreen(new LoadingScreen(AssetScreenEnum.GAMESCREEN));
 		setScreen(new LoadingScreen(AssetScreenEnum.GAMESCREEN));
-		
 
-		//setScreen(gameScreen);
+		// setScreen(gameScreen);
 	}
 
 	@Override
@@ -78,5 +79,9 @@ public class EndorworksGame extends Game implements InputObserver {
 
 	public AssetManager getAssetManager() {
 		return assetManager;
+	}
+
+	public InputProcessor getInputProcessor() {
+		return Gdx.input.getInputProcessor();
 	}
 }

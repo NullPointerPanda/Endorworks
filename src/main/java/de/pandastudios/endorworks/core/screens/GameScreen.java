@@ -5,6 +5,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import de.pandastudios.endorworks.core.EndorworksGame;
 import de.pandastudios.endorworks.core.objects.IsometricTileMap;
 import de.pandastudios.endorworks.core.utility.PlayerManager;
 import de.pandastudios.endorworks.core.utility.Producer;
@@ -31,6 +32,8 @@ public class GameScreen extends ScreenAdapter {
 	public void show() {
 		isometricTileMap = Producer.getIsometricTileMap();
 		PlayerManager.getInstance().addTilemap(isometricTileMap);
+
+		//Gdx.input.setInputProcessor(EndorworksGame.INSTANCE.getInputProcessor());
 	}
 
 	@Override

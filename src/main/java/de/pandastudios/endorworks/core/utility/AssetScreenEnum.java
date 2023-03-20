@@ -8,14 +8,16 @@ import java.util.List;
  *
  */
 public enum AssetScreenEnum {
-	GAMESCREEN(Arrays.asList("baum_upper.png", "grass_upper.png", "grass.png", "sand_upper.png", "sand.png",
+	GAMESCREEN("GameScreen",Arrays.asList("baum_upper.png", "grass_upper.png", "grass.png", "sand_upper.png", "sand.png",
 			"water_upper.png", "water.png")),
-	MENUSCREEN(Arrays.asList("", ""));
+	MENUSCREEN("MenuScreen",Arrays.asList("", ""));
 	//UMBAUEN FÜR ATLAS!	
 	
+	public String className;
 	public List<String> assetList;
 
-	private AssetScreenEnum(List<String> assetList) {
+	private AssetScreenEnum(String className, List<String> assetList) {
+		this.className = className;
 		this.assetList = assetList;
 	}
 }
